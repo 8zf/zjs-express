@@ -58,9 +58,14 @@ app.post('/send', function (req, res) {
             // console.log(result[i]);
         }
 
+        if (fs.existsSync(path.join(__dirname, 'uploads/result' ,(files.content[0].originalFilename))) == true)
+        {
+            fs.unlinkSync(path.join(__dirname, 'uploads/result' ,(files.content[0].originalFilename)));
+        }
+
         for (k = 0; k < result.length; k++)
         {
-            fs.appendFileSync(path.join(__dirname, 'uploads/result' ,path.basename(files.content[0].originalFilename)), result[k] + "\n");
+            fs.appendFileSync(path.join(__dirname, 'uploads/result' ,(files.content[0].originalFilename)), result[k] + "\n");
         }
 
         var options = {
