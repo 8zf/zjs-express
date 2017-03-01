@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>数据处理</title>
+    <script>
+        function getURL() {
+          var price = document.getElementById("price").value;
+          document.getElementById("main_form").setAttribute("action", "/send?price="+price);
+          console.log(price);
+          return true
+        }
+    </script>
 </head>
 <body>
-<form method="post" action="/send" enctype="multipart/form-data">
+<form method="post" action="/send" enctype="multipart/form-data" id="main_form" onsubmit="getURL()">
     <input name="content" type="file">
-    <!--<textarea name="content" style="width: 100%; height: 400px;" placeholder="复制需要转换的内容"></textarea>-->
+    <label for="price">价格：</label>
+    <input type="number" id="price" placeholder="222">
     <button type="submit">提交</button>
 </form>
 <div>

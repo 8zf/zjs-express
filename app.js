@@ -59,7 +59,7 @@ app.post('/send', function (req, res) {
             {
                 //截取数据
                 datas[i][j] = getContent(datas[i][j]);
-                result[i] += genConv(datas[i][j]);
+                result[i] += genConv(datas[i][j], req.query.price);
             }
             // if (i < 3)
             // console.log(result[i]);
@@ -112,15 +112,15 @@ function getContent(str)
     return str;
 }
 
-function genConv(x) {
-    return "222:3::" + x + ";20549:672;" +
-        "222:3::" + x + ";20549:28389;" +
-        "222:3::" + x + ";20549:28390;" +
-        "222:3::" + x + ";20549:28391;" +
-        "222:3::" + x + ";20549:28392;" +
-        "222:3::" + x + ";20549:28393;" +
-        "222:3::" + x + ";20549:28394;" +
-        "222:3::" + x + ";20549:28395;";
+function genConv(x, price) {
+    return price + ":3::" + x + ";20549:672;" +
+      price + ":3::" + x + ";20549:28389;" +
+      price + ":3::" + x + ";20549:28390;" +
+      price + ":3::" + x + ";20549:28391;" +
+      price + ":3::" + x + ";20549:28392;" +
+      price + ":3::" + x + ";20549:28393;" +
+      price + ":3::" + x + ";20549:28394;" +
+      price + ":3::" + x + ";20549:28395;";
 }
 
 function countSemicolon(strSource) {
